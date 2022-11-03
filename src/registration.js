@@ -27,7 +27,7 @@ const Registration = () => {
         console.log(fname, lname, email, password, confirmPwd, licenseId);
     }
 
-    return (<React.Fragment>
+    return (<div className="registerpage">
         <h2>User Registration</h2>
             <Form noValidate validated={validated}>
                 <Form.Group className="mb-3" controlId="firstName">
@@ -65,7 +65,7 @@ const Registration = () => {
                     Submit
                 </Button>
             </Form>
-    </React.Fragment>);
+    </div>);
 }
 
 export default Registration;

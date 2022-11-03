@@ -1,5 +1,5 @@
 body {
-  background-image: url("../public/images/background.png");
+  background-image: url("images/background.png");
  }
 
 .App {
@@ -41,12 +41,14 @@ body {
   }
 }
 
-.App .container {
-  width: 40%;
+.loginpage, .registerpage{
+  width: 35% !important;
+  margin-left: 30% !important;
 }
 
 .App .main-content {
-  margin-top: 10%;
+  margin-top: 2em;
+  text-align: center;
 }
 
 .App .mb-3 {
@@ -55,4 +57,39 @@ body {
 
 .loginButton {
   margin-right: 10px;
+}
+
+.header {
+  margin-top: 2em !important;
+}
+
+.welcomeUser {
+  text-align: left;
+  color: red;
+}
+
+.logout {
+  text-align: right;
+}
+
+.title h2, .title h3{
+  margin-top: 2em;
+}
+
+.images-home {
+  margin-top: 5em !important;
+}
+
+.vertical-line {
+  border-left: 5px solid black;
+  height: 200px;
+}
+
+.car-home img, .bike-home img{
+  height: 200px;
+  width: 400px;
+}
+
+.car-home img {
+  float: left;
 }
