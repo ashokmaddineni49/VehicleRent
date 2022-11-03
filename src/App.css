@@ -1,3 +1,7 @@
+body {
+  background-image: url("../public/images/background.png");
+ }
+
 .App {
   text-align: center;
 }
@@ -35,4 +39,20 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App .container {
+  width: 40%;
+}
+
+.App .main-content {
+  margin-top: 10%;
+}
+
+.App .mb-3 {
+  text-align: left;
+}
+
+.loginButton {
+  margin-right: 10px;
 }
