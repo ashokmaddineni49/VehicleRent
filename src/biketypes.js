@@ -34,11 +34,11 @@ const Biketypes = () => {
                 <div className="col-3 vehicletypes-home">
                     <img src={commuter_bike} alt={""}></img>
                 </div>
-                <div class="col-1 vertical-line"></div>
+                <div class="col-1 vertical-line_types" ></div>
                 <div className="col-3 vehicletypes-home">
                     <img src={mountain_bike} alt={""}></img>
                 </div>
-                <div class="col-1 vertical-line"></div>
+                <div class="col-1 vertical-line_types"></div>
                 <div className="col-3 vehicletypes-home">
                     <img src={sports_bike} alt={""}></img>
                 </div>

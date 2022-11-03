@@ -102,3 +102,7 @@ body {
 .vehicletypes-home img {
   float: left;
 }
+.vertical-line_types {
+  border-right: 5px solid black;
+  height: 200px;
+}
