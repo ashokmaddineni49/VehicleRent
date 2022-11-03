@@ -34,11 +34,11 @@ const Cartypes = () => {
                 <div className="col-3 vehicletypes-home">
                     <img src={Sedan} alt={"Sedan"}></img>
                 </div>
-                <div class="col-1 vertical-line"></div>
+                <div class="col-1 vertical-line_types"></div>
                 <div className="col-3 vehicletypes-home">
                     <img src={SUV} alt={""}></img>
                 </div>
-                <div class="col-1 vertical-line"></div>
+                <div class="col-1 vertical-line_types"></div>
                 <div className="col-2 vehicletypes-home">
                     <img src={Van} alt={""}></img>
                 </div>
