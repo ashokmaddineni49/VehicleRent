@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import bike from "./images/bike.jpg";
-import car from "./images/car.png"
+import car from "./images/car.png";
+
 
 const Home = () => {
     const [user, setUser] = useState("");
@@ -28,11 +29,11 @@ const Home = () => {
              </div>
              <div className="row images-home">
                 <div className="col-6 bike-home">
-                    <img src={bike} alt={""}></img>
+                    <img src={bike} alt={""} onClick={()=> window.open("http://localhost:3000/biketypes", "_self")}></img>
                 </div>
                 <div class="col-1 vertical-line"></div>
                 <div className="col-5 car-home">
-                    <img src={car} alt={""}></img>
+                    <img src={car} alt={""} onClick={()=> window.open("http://localhost:3000/cartypes", "_self")}></img>
                 </div>
              </div>
         </div>

@@ -93,3 +93,16 @@ body {
 .car-home img {
   float: left;
 }
+
+.vehicletypes-home img{
+  height: 200px;
+  width: 400px;
+}
+
+.vehicletypes-home img {
+  float: left;
+}
+.vertical-line_types {
+  border-right: 5px solid black;
+  height: 200px;
+}
