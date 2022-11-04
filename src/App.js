@@ -7,8 +7,6 @@ import {
 } from "react-router-dom";
 import Registration from './registration';
 import Home from './home';
-import Biketypes from './biketypes';
-import Cartypes from './cartypes';
 
 
 function App() {
@@ -22,8 +20,8 @@ function App() {
             <Route path="register" element={<Registration />} />
             <Route path="home" element={<Home />} />
             <Route path="logout" element={<Login />} />
-            <Route path="biketypes" element={<Biketypes />} />
-            <Route path="cartypes" element={<Cartypes />} />
+            {/* <Route path="bikedetails" element={<BikeDetails />} />
+            <Route path="cardetails" element={<CarDetails />} /> */}
           </Routes>
         </BrowserRouter>
         </div>

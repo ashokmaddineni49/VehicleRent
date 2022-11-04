@@ -5,27 +5,9 @@ import Sedan from "./images/Sedan.png";
 import SUV from "./images/SUV.jpg";
 import Van from "./images/Van.png";
 
-const Cartypes = () => {
-    const [user, setUser] = useState("");
-
-    useEffect(() => {
-        const loggedInUser = localStorage.getItem("user");
-        loggedInUser && setUser(loggedInUser);
-    
-    },[]);
+const Cartypes = () => {    
     return (
         <div class="main">
-            <div className="row header">
-                <div className="col welcomeUser">
-                    Welcome {user}
-                </div>
-                <div className="col Homebutton">
-                <Link to="/Home" id='homeButton'>Home</Link>
-                </div>
-                <div className="col logout">
-                    <Link to="/logout" id='logoutButton'>Logout</Link>
-                </div>
-            </div>
             <div className="row title">
                 <h2>Welcome to Vehicle Renting System</h2>
                 <h3>Please select the type of Car you want</h3>
