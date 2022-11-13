@@ -28,17 +28,17 @@ const VehicleList = (props) => {
         list.map((vehicle, index) => {
             return (
                 <div key={index} className="row vehicleDetails">
-                    <div className="col vehicleImage">
-                        <img src="" alt="for vehicle" style={{width:"200px",height:"200px"}}/>
+                    <div className="col-3 vehicleImage">
+                        <img src={require(`./images/vehicles/${vehicle.model_name}.jpg`)} alt="for vehicle" style={{width:"300px",height:"200px"}}/>
                 </div>
-                    <div className="col vehicleNameDesc">
+                    <div className="col-6 vehicleNameDesc">
                         <div className="vehicleName"><b>{vehicle.model_name}</b></div>
                         <div className="vehicleDesc">{vehicle.vehicle_description}</div>
                     </div>
-                    <div className="col vehiclePrice">
+                    <div className="col-1 vehiclePrice">
                         <div> ${vehicle.vehicle_cost}</div>        
                     </div>
-                    <div className="col vehicleBook">
+                    <div className="col-2 vehicleBook">
                         <Button variant="primary" onClick={() => onSelectVehicle(vehicle)}>Select</Button>
                     </div>
                 </div>
