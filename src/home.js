@@ -46,7 +46,7 @@ const Home = () => {
                 <div className="col-6 bike-home">
                     <img src={bike} alt={""} onClick={handleBikeClick}></img>
                 </div>
-                <div class="col-1 vertical-line"></div>
+                <div className="col-1 vertical-line"></div>
                 <div className="col-5 car-home">
                     <img src={car} alt={""} onClick={handleCarClick}></img>
                 </div>
