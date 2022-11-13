@@ -106,3 +106,10 @@ body {
   border-right: 5px solid black;
   height: 200px;
 }
+
+.vehicleName, .vehicleDesc {
+  text-align: left;
+}
+.vehicleDetails {
+  margin-bottom: 1em;
+}

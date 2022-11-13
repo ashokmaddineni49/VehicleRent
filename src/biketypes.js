@@ -1,48 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
-import commuter_bike from "./images/commuter_bike.jpg";
-import mountain_bike from "./images/Mountain_Bike.png";
-import sports_bike from "./images/Sports_Bike.png";
-import BikeDetails from "./bikeDetails";
-//import { useNavigate } from "react-router-dom";
+import VehicleList from "./vehicleList";
+import Titles from "./titles";
+import axios from "axios";
 
-const Biketypes = () => {
-
-    //const navigate = useNavigate();
-    const [biketype, setBiketype] = useState("");
+const Biketypes = (props) => {
+    const [bikeSubtype, setBikeSubtype] = useState("");
     const [canShowBikeDetails, setCanShowBikeDetails] = useState(false);
+    const [bikeTypes, setBiketypes] = useState([]);
     const handleClick = (e) => {
         const type = e.target.innerText;
-        //console.log(e.target.innerText);
-        setBiketype(type);
+        setBikeSubtype(type);
         setCanShowBikeDetails(true);
+        //props.addBikeTypesLinkHome(true);
+    }
+
+    useEffect(() => {
+        getAllBikeTypes();
+    },[]);
+
+    const getAllBikeTypes = async () => {
+        const bikes = await axios.get('http://localhost:8080/vehicle/subtypes', {
+            params: {
+              type: 'bike'
+            }
+          });
+          setBiketypes(bikes.data);
     }
 
     return (
         <div class="main">
-            <div className="row title">
-                <h2>Welcome to Vehicle Renting System</h2>
-                {canShowBikeDetails ? <h3>Please select the {biketype} bike</h3>:<h3>Please select the type of Bike you want</h3>}
-             </div>
+             {canShowBikeDetails ? <Titles title={`Please select from available ${bikeSubtype} bikes`}/> : <Titles title={`Please select the type of Bike you want`}/>}
              {!canShowBikeDetails && <div className="row images-home">
-                <div className="col-3 vehicletypes-home">
-                    <div><img src={commuter_bike} alt={""}></img></div>
-                    <div><Button onClick={e => handleClick(e)}>Commuter</Button></div>
-                </div>
-                <div class="col-1 vertical-line_types" ></div>
-                <div className="col-3 vehicletypes-home">
-                    <div><img src={mountain_bike} alt={""}></img></div>
-                    <Button onClick={e => handleClick(e)}>Mountain</Button>
-                </div>
-                <div class="col-1 vertical-line_types"></div>
-                <div className="col-3 vehicletypes-home">
-                    <div><img src={sports_bike} alt={""}></img></div>
-                    <Button onClick={e => handleClick(e)}>Sports</Button>
-                </div>
+                {bikeTypes.map((type, index) => {
+                    return  (<div key={"biketype"+index} className="col-4 vehicletypes-home">
+                        <div><img src={require(`./images/${type.subtype}.png`)} alt={""}></img></div>
+                        <div><Button onClick={e => handleClick(e)}>{type.subtype}</Button></div>
+                    </div>)
+                })}
              </div>}
-             {canShowBikeDetails && (<div>
-                    <BikeDetails biketype={biketype}/>
-                </div>)}
+            {canShowBikeDetails && <VehicleList subtype={bikeSubtype}/>}
         </div>
     )
 }

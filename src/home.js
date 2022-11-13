@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import bike from "./images/bike.jpg";
 import car from "./images/car.png";
 import Biketypes from "./biketypes";
 import { Button } from "react-bootstrap";
 import Cartypes from "./cartypes";
+import Header from "./header";
+import Titles from "./titles";
 
 const Home = () => {
     const [user, setUser] = useState("");
     const [showBikeDetails, setShowBikeDetails] = useState(false);
     const [showCarDetails, setShowCarDetails] = useState(false);
+    // const [canShowBikeTypesLink, setCanShowBikeTypesLink] = useState(false);
 
     useEffect(() => {
         const loggedInUser = localStorage.getItem("user");
@@ -34,22 +36,12 @@ const Home = () => {
 
     return (
         <div class="main">
-            <div className="row header">
-                <div className="col welcomeUser">
-                    Welcome {user}
-                </div>
-                { (showBikeDetails||showCarDetails)  && (<div className="col Homebutton">
+            <Header user={user}/>
+            { (showBikeDetails||showCarDetails)  && (<div className="col Homebutton">
                     <Button onClick={handleHomeClick}>Home</Button>
                 </div>)}
-                <div className="col logout">
-                    <Link to="/logout" id='logoutButton'>Logout</Link>
-                </div>
-            </div>
-            
-            {!showBikeDetails && !showCarDetails && <><div className="row title">
-                <h2>Welcome to Vehicle Renting System</h2>
-                <h3>Select the type of Vehicle you want</h3>
-             </div>
+            {!showBikeDetails && !showCarDetails && <>
+            <Titles title={"Select the type of Vehicle you want"}/>
              <div className="row images-home">
                 <div className="col-6 bike-home">
                     <img src={bike} alt={""} onClick={handleBikeClick}></img>
@@ -61,8 +53,7 @@ const Home = () => {
              </div></>}
              
             {showBikeDetails && <Biketypes/>}
-            { showCarDetails && <Cartypes/>}
-            
+            {showCarDetails && <Cartypes/>}           
         </div>
     )
 }

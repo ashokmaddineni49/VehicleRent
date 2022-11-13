@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-
-
+import React, { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
     const [fname, setFname] = useState('');
@@ -12,8 +12,9 @@ const Registration = () => {
     const [confirmPwd, setConfirmPwd] = useState('');
     const [licenseId, setLicenseId] = useState('');
     const [validated, setValidated] = useState(false);
+    const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             alert("Form not valid");
@@ -24,7 +25,22 @@ const Registration = () => {
             return false;
         }
         setValidated(true);
-        console.log(fname, lname, email, password, confirmPwd, licenseId);
+        try {
+            let response = await axios({
+                method: 'post',
+                url: 'http://localhost:8080/register',
+                data: {
+                    fname, lname, email, password, licenseId
+                      }
+            });
+            console.log(response);
+            alert("Inserted record successfully with first name: " + response.data.firstname);
+            navigate("/");
+    
+        } catch(e) {
+            console.log(e);
+        }
+        
     }
 
     return (<div className="registerpage">

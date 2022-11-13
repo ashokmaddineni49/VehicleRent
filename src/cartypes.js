@@ -1,31 +1,50 @@
 import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
-import { Link } from "react-router-dom";
-import Sedan from "./images/Sedan.png";
-import SUV from "./images/SUV.jpg";
-import Van from "./images/Van.png";
+import VehicleList from "./vehicleList";
+import Titles from "./titles";
+import axios from "axios";
 
 const Cartypes = () => {    
+
+    const [carSubtype, setCarSubtype] = useState("");
+    const [canShowCarDetails, setCanShowCarDetails] = useState(false);
+    const [carTypes, setCartypes] = useState([]);
+
+    const handleClick = (e) => {
+        const type = e.target.innerText;
+        setCarSubtype(type);
+        setCanShowCarDetails(true);
+    }
+
+    useEffect(() => {
+        getAllCarTypes();
+    },[]);
+
+    const getAllCarTypes = async () => {
+        const cars = await axios.get('http://localhost:8080/vehicle/subtypes', {
+            params: {
+              type: 'car'
+            }
+          });
+          setCartypes(cars.data);
+    }
+
     return (
         <div class="main">
-            <div className="row title">
-                <h2>Welcome to Vehicle Renting System</h2>
-                <h3>Please select the type of Car you want</h3>
-             </div>
-             <div className="row images-home">
-                <div className="col-3 vehicletypes-home">
-                    <img src={Sedan} alt={"Sedan"}></img>
+            {canShowCarDetails ? <Titles title={`Please select from available ${carSubtype} cars`}/> : <Titles title={`Please select the type of Car you want`}/>}
+             {!canShowCarDetails && <div className="row images-home">
+
+             {carTypes.map((type, index) => {
+                    return  (<div key={"cartype"+index} className="col-4 vehicletypes-home">
+                        <div><img src={require(`./images/${type.subtype}.png`)} alt={""}></img></div>
+                        <div><Button onClick={e => handleClick(e)}>{type.subtype}</Button></div>
+                    </div>)
+                })}
+             </div>}
+             <div>
+                 {  canShowCarDetails && <VehicleList subtype={carSubtype}/>}
                 </div>
-                <div class="col-1 vertical-line_types"></div>
-                <div className="col-3 vehicletypes-home">
-                    <img src={SUV} alt={""}></img>
-                </div>
-                <div class="col-1 vertical-line_types"></div>
-                <div className="col-2 vehicletypes-home">
-                    <img src={Van} alt={""}></img>
-                </div>
-             </div>
-        </div>
-    )
+        </div>)
 }
+
 export default Cartypes;
