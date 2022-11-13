@@ -35,7 +35,7 @@ const Home = () => {
     }
 
     return (
-        <div class="main">
+        <div className="main">
             <Header user={user}/>
             { (showBikeDetails||showCarDetails)  && (<div className="col Homebutton">
                     <Button onClick={handleHomeClick}>Home</Button>

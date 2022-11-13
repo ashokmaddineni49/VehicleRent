@@ -29,7 +29,7 @@ const Biketypes = (props) => {
     }
 
     return (
-        <div class="main">
+        <div className="main">
              {canShowBikeDetails ? <Titles title={`Please select from available ${bikeSubtype} bikes`}/> : <Titles title={`Please select the type of Bike you want`}/>}
              {!canShowBikeDetails && <div className="row images-home">
                 {bikeTypes.map((type, index) => {
