@@ -9,6 +9,7 @@ const Cartypes = () => {
     const [carSubtype, setCarSubtype] = useState("");
     const [canShowCarDetails, setCanShowCarDetails] = useState(false);
     const [carTypes, setCartypes] = useState([]);
+    const [canShowTitle, setCanShowTitle] = useState(true);
 
     const handleClick = (e) => {
         const type = e.target.innerText;
@@ -29,9 +30,13 @@ const Cartypes = () => {
           setCartypes(cars.data);
     }
 
+    const onVehicleSelect = () => {
+        setCanShowTitle(false);
+    }
+
     return (
-        <div class="main">
-            {canShowCarDetails ? <Titles title={`Please select from available ${carSubtype} cars`}/> : <Titles title={`Please select the type of Car you want`}/>}
+        <div className="main">
+            {(canShowCarDetails && canShowTitle) ? <Titles title={`Please select from available ${carSubtype} cars`}/> : canShowTitle && <Titles title={`Please select the type of Car you want`}/>}
              {!canShowCarDetails && <div className="row images-home">
 
              {carTypes.map((type, index) => {
@@ -42,7 +47,7 @@ const Cartypes = () => {
                 })}
              </div>}
              <div>
-                 {  canShowCarDetails && <VehicleList subtype={carSubtype}/>}
+                 {  canShowCarDetails && <VehicleList vehicleSelect={onVehicleSelect} subtype={carSubtype}/>}
                 </div>
         </div>)
 }

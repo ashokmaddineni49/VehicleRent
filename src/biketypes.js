@@ -7,6 +7,7 @@ import axios from "axios";
 const Biketypes = (props) => {
     const [bikeSubtype, setBikeSubtype] = useState("");
     const [canShowBikeDetails, setCanShowBikeDetails] = useState(false);
+    const [canShowTitle, setCanShowTitle] = useState(true);
     const [bikeTypes, setBiketypes] = useState([]);
     const handleClick = (e) => {
         const type = e.target.innerText;
@@ -28,9 +29,13 @@ const Biketypes = (props) => {
           setBiketypes(bikes.data);
     }
 
+    const onVehicleSelect = () => {
+        setCanShowTitle(false);
+    }
+
     return (
         <div className="main">
-             {canShowBikeDetails ? <Titles title={`Please select from available ${bikeSubtype} bikes`}/> : <Titles title={`Please select the type of Bike you want`}/>}
+             {(canShowBikeDetails && canShowTitle) ? <Titles title={`Please select from available ${bikeSubtype} bikes`}/> :  (canShowTitle && <Titles title={`Please select the type of Bike you want`}/>)}
              {!canShowBikeDetails && <div className="row images-home">
                 {bikeTypes.map((type, index) => {
                     return  (<div key={"biketype"+index} className="col-4 vehicletypes-home">
@@ -39,7 +44,7 @@ const Biketypes = (props) => {
                     </div>)
                 })}
              </div>}
-            {canShowBikeDetails && <VehicleList subtype={bikeSubtype}/>}
+            {canShowBikeDetails && <VehicleList vehicleSelect={onVehicleSelect} subtype={bikeSubtype}/>}
         </div>
     )
 }

@@ -113,3 +113,16 @@ body {
 .vehicleDetails {
   margin-bottom: 1em;
 }
+.mainDivPayment {
+  margin-top: 10%;
+}
+.paymentDiv {
+  margin-bottom: 5%;
+}
+.bookSucessDiv {
+  margin-top: 5%;
+  color: green;
+}
+.logoutDiv {
+  margin-top: 10%;
+}
