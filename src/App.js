@@ -9,6 +9,7 @@ import Registration from './registration';
 import Home from './home';
 import Payment from './payment';
 import Logout from './logout';
+import BookingDetails from './bookingDetails';
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
             <Route path="register" element={<Registration />} />
             <Route path="home" element={<Home />} />
             <Route path="logout" element={<Logout />} />
-            {/* <Route path="payment" element={<Payment />}/>  */}
+            <Route path="bookingdetails" element={<BookingDetails />}/>
           </Routes>
         </BrowserRouter>
         </div>

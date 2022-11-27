@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
+import BookingDetails from "./bookingDetails";
+import { useNavigate } from "react-router-dom";
 
 const Payment = (props) => {
     const [isVehicleBooked, setIsVehicleBooked] = useState(false);
+    const navigate = useNavigate();
 
     const onBookVehicle = () => {
-        console.log(props.vehicle);
+        //console.log(props.vehicle);
         setIsVehicleBooked(true);
+        navigate('/bookingdetails', { state: {vehicle: props.vehicle}})
         
     };
 
@@ -22,12 +26,12 @@ const Payment = (props) => {
             </div>
             <div className="row vehicleTotalPrice">
                 <div className="col-4"></div>
-                <div className="col-2"> <b>Total Price: ${props.vehicle.total_cost}</b></div>   
+                <div className="col-2"> <b>Total Price: ${props.vehicle_cost}</b></div>   
                 <div className="col-2 vehicleBook">
                     <Button variant="primary" onClick={() => onBookVehicle()}>Book</Button>
                 </div>     
             </div>
-            {isVehicleBooked && <div className="bookSucessDiv"><h3>Vehicle booked successfully</h3></div>}
+            {/* {isVehicleBooked && <BookingDetails vehicle={props.vehicle}/>} */}
         </div>)
 }
 
