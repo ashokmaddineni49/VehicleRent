@@ -26,7 +26,7 @@ const Payment = (props) => {
             </div>
             <div className="row vehicleTotalPrice">
                 <div className="col-4"></div>
-                <div className="col-2"> <b>Total Price: ${props.vehicle_cost}</b></div>   
+                <div className="col-2"> <b>Price: ${props.vehicle.vehicle_cost}</b></div>   
                 <div className="col-2 vehicleBook">
                     <Button variant="primary" onClick={() => onBookVehicle()}>Book</Button>
                 </div>     
