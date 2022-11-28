@@ -22,7 +22,7 @@ const Login = () => {
         const user = users.find(user => user.email === email);
         console.log(user);
         if(user && user.pass_word === password) {
-            localStorage.setItem("user", user.email);
+            localStorage.setItem("user", user.firstname);
             navigate("/home");
         } else {
             alert("Userid or password is incorrect");
